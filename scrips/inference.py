@@ -218,6 +218,7 @@ def parse_args():
     if env_local_rank != -1 and env_local_rank != args.local_rank:
         args.local_rank = env_local_rank
 
+    # ok
     if args.non_ema_revision is None:
         args.non_ema_revision = args.revision
 
