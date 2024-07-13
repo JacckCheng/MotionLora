@@ -1,0 +1,16 @@
+model_path: "/home/chengtianle/MotionLora/stable-diffusion-v1-5"
+lora_weights_path: "/home/chengtianle/MotionLora/configs/checkpoints/lay"
+output_path: "/home/chengtianle/MotionLora/outputs/lay.png"
+prompt: "person, bed"
+
+lora_config:
+  target_modules: ["attn", "ff"]
+  r: 8
+  lora_alpha: 32
+  lora_dropout: 0.1
+
+pipeline_config:
+  prompt: "person, bed"
+  num_inference_steps: 50
+  guidance_scale: 7.5     # text prompt影响力因子，接近1则text prompt几乎没用，大于15则生成的图像会非常接近提示文本的描述，但可能会变得较为僵硬或失去一些细节的多样性，一般取7.5～10之间
+  image_guidance_scale: 1.5

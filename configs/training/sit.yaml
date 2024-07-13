@@ -1,0 +1,24 @@
+model_path: "/home/chengtianle/MotionLora/stable-diffusion-v1-5"
+lora_weights_path: "/home/chengtianle/MotionLora/configs/checkpoints/sit"
+data_path: "/home/chengtianle/MotionLora/data/inputs/sit"
+
+num_epochs: 5
+prompt: "peaple, chair"
+
+lora_config:
+  target_modules: ["attn", "ff"]  # Lora作用的部位，这里选择注意力机制模块和前馈神经网络模块
+  r: 8                            # 低秩矩阵的秩。较低的值会减少参数数量，但可能会影响模型的表示能力。
+  lora_alpha: 32                  # 缩放因子，用于调整低秩矩阵的输出
+  lora_dropout: 0.1
+
+dataloader_config:
+  batch_size: 1
+  shuffle: True
+  num_workers: 0  # 训练数据集好小，仅用主进程中完成
+
+optimizer_config:
+  lr: 1e-4
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_weight_decay: 1e-2
+  adam_epsilon: 1e-08
